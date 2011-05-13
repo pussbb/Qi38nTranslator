@@ -1,2 +1,4 @@
 /obj
 /extras/plugins/db/sqliteplugin/obj
+Makefile
+*~
