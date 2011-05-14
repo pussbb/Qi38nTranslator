@@ -15,6 +15,9 @@ public:
     explicit Qi38nTranslator(QWidget *parent = 0);
     ~Qi38nTranslator();
 
+private slots:
+    void on_actionAbout_Qt_triggered();
+
 private:
     Ui::Qi38nTranslator *ui;
 };

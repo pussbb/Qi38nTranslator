@@ -29,3 +29,6 @@ HEADERS  += headers/qi38ntranslator.h \
     headers/qcorewindow.h
 
 FORMS    += ui/qi38ntranslator.ui
+
+RESOURCES += \
+    res/qi38tr.qrc
