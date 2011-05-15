@@ -3,7 +3,7 @@
 
 #include "headers/qcorewindow.h"
 #include <QDir>
-
+#include <QListWidgetItem>
 namespace Ui {
     class Qi38nTranslator;
 }
@@ -28,10 +28,19 @@ private slots:
 
     void on_actionSettings_triggered();
     void updateProjectTemplates();
+    void updateProjectList();
 
     void on_projectTemplates_currentIndexChanged(int index);
 
     void on_createProject_clicked();
+
+    void on_projectList_itemDoubleClicked(QListWidgetItem* item);
+
+    void on_openProject_clicked();
+
+    void on_projectList_customContextMenuRequested(QPoint pos);
+
+    void on_actionRemove_Project_triggered();
 
 private:
     Ui::Qi38nTranslator *ui;

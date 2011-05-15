@@ -56,7 +56,17 @@
             <number>0</number>
            </property>
            <item row="0" column="0">
-            <widget class="QListWidget" name="projectList"/>
+            <widget class="QListWidget" name="projectList">
+             <property name="contextMenuPolicy">
+              <enum>Qt::CustomContextMenu</enum>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -217,6 +227,13 @@ p, li { white-space: pre-wrap; }
                </property>
               </widget>
              </item>
+             <item row="11" column="0">
+              <widget class="QPushButton" name="openProject">
+               <property name="text">
+                <string>Open</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
@@ -324,6 +341,15 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Save</string>
+   </property>
+  </action>
+  <action name="actionRemove_Project">
+   <property name="icon">
+    <iconset resource="../res/qi38tr.qrc">
+     <normaloff>:/main/main/delete_page.png</normaloff>:/main/main/delete_page.png</iconset>
+   </property>
+   <property name="text">
+    <string>Remove Project</string>
    </property>
   </action>
  </widget>

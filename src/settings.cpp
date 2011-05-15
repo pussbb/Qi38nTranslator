@@ -75,3 +75,8 @@ void Settings::on_newPhpTemplate_clicked()
            << "/\*.*/";
     ui->ignoreStr->setText (ignore.join ("\n"));
 }
+
+void Settings::on_buttonBox_rejected()
+{
+    reject ();
+}
