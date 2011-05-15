@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QDir>
 #include <QSettings>
+#include <QListWidgetItem>
 
 namespace Ui {
     class Settings;
@@ -28,6 +29,9 @@ private slots:
     void on_newPhpTemplate_clicked();
 
     void on_buttonBox_rejected();
+
+
+    void on_listWidget_itemClicked(QListWidgetItem* item);
 
 private:
     Ui::Settings *ui;

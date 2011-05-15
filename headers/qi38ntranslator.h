@@ -9,6 +9,7 @@
 #include <QDirIterator>
 #include <QTreeWidgetItem>
 #include <QListWidgetItem>
+#include <QProgressDialog>
 
 namespace Ui {
     class Qi38nTranslator;
@@ -24,6 +25,7 @@ public:
     QDir templateDir;
     QList<QTreeWidgetItem *> fileTreeList;
     QListWidgetItem* currentTranslationItem;
+    QProgressDialog *progress;
 
 private slots:
     void on_actionAbout_Qt_triggered();

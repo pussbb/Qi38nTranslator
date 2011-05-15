@@ -127,6 +127,8 @@ void Qi38nTranslator::on_projectList_itemDoubleClicked(QListWidgetItem* item)
 
 void Qi38nTranslator::on_openProject_clicked()
 {
+    progress = new QProgressDialog("Operation in progress.", "Cancel", 0, 0);
+    progress->show ();
     ui->tranlationList->clear ();
     ui->fileTree->clear ();
     ui->translation->clear ();
@@ -137,6 +139,7 @@ void Qi38nTranslator::on_openProject_clicked()
     ui->actionBackToMainPage->setEnabled (true);
     parseTranslationFile (ui->destFile->text ());
     findInFolder (ui->sourceFolder->text ());
+    progress->hide ();
 }
 
 void Qi38nTranslator::on_projectList_customContextMenuRequested(QPoint pos)

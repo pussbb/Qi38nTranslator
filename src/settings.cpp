@@ -84,3 +84,12 @@ void Settings::on_buttonBox_rejected()
 {
     reject ();
 }
+
+
+
+void Settings::on_listWidget_itemClicked(QListWidgetItem* item)
+{
+    Q_UNUSED(item);
+    int index = ui->listWidget->currentIndex ().row ();
+    ui->settingsWidget->setCurrentIndex (index);
+}
