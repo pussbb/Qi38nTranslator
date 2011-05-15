@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>624</width>
-    <height>405</height>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -127,7 +127,11 @@
               </widget>
              </item>
              <item row="9" column="2" colspan="2">
-              <widget class="QTextEdit" name="ignoreStr"/>
+              <widget class="QTextEdit" name="ignoreStr">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
              </item>
              <item row="9" column="0">
               <widget class="QLabel" name="label_5">
@@ -169,10 +173,18 @@ p, li { white-space: pre-wrap; }
               </widget>
              </item>
              <item row="7" column="2" colspan="2">
-              <widget class="QLineEdit" name="fileExt"/>
+              <widget class="QLineEdit" name="fileExt">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
              </item>
              <item row="8" column="2" colspan="2">
-              <widget class="QLineEdit" name="searchFor"/>
+              <widget class="QLineEdit" name="searchFor">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
              </item>
              <item row="5" column="2">
               <widget class="QLineEdit" name="sourceFolder">
@@ -184,7 +196,7 @@ p, li { white-space: pre-wrap; }
              <item row="11" column="2">
               <widget class="QPushButton" name="createProject">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Create Project</string>
@@ -198,7 +210,7 @@ p, li { white-space: pre-wrap; }
              <item row="11" column="3">
               <widget class="QPushButton" name="clearProjValues">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Clear</string>

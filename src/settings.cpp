@@ -53,6 +53,7 @@ void Settings::on_phpTemplSave_clicked()
 
 void Settings::on_phpTemplatesList_currentIndexChanged(int index)
 {
+    Q_UNUSED(index);
     if(!templateDir.exists ())
         return ;
     QString file = templateDir.canonicalPath()+QDir::toNativeSeparators("/")
@@ -67,5 +68,10 @@ void Settings::on_newPhpTemplate_clicked()
 {
     ui->phpTemplName->setText ("");
     ui->searchFor->setText ("");
-    ui->ignoreStr->setText ("<script.*script>\n<!--.*-->\n//.*\n\n//.*\n/\*.*/");
+    QStringList ignore;
+    ignore << "<script.*script>"
+           << "<!--.*-->"
+           << "//.*\n"
+           << "/\*.*/";
+    ui->ignoreStr->setText (ignore.join ("\n"));
 }

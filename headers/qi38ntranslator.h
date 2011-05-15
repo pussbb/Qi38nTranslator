@@ -31,6 +31,8 @@ private slots:
 
     void on_projectTemplates_currentIndexChanged(int index);
 
+    void on_createProject_clicked();
+
 private:
     Ui::Qi38nTranslator *ui;
 };
