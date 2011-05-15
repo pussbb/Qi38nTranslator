@@ -4,3 +4,4 @@ mimetypes=php
 searchfor=__\\('(.*)'
 ignore=<script.*script>, <!--.*-->, //.*\\n, /\\*.*/
 langfilerx="\\s'(.*)'\\s*=>\\s*'(.*)'"
+savetemplate="<?php defined('SYSPATH') or die('No direct access allowed.');\n\nreturn array(\n{    '{key}'    => '{value}',}\n);"

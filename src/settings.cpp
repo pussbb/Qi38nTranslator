@@ -48,6 +48,7 @@ void Settings::on_phpTemplSave_clicked()
     tplSettings.setValue ("searchfor",ui->searchFor->text ());
     tplSettings.setValue ("ignore",ui->ignoreStr->toPlainText ().split ("\n"));
     tplSettings.setValue ("langfilerx",ui->langFileRx->text ());
+    tplSettings.setValue ("savetemplate",ui->saveTemplate->toPlainText ());
     tplSettings.sync ();
     updatePhpTemplatesList();
 }
@@ -64,6 +65,7 @@ void Settings::on_phpTemplatesList_currentIndexChanged(int index)
     ui->searchFor->setText (tplSettings.value ("searchfor","").toString ());
     ui->ignoreStr->setText (tplSettings.value ("ignore","").toStringList ().join ("\n"));
     ui->langFileRx->setText (tplSettings.value ("langfilerx","").toString ());
+    ui->saveTemplate->setText (tplSettings.value ("savetemplate","").toString ());
 }
 
 void Settings::on_newPhpTemplate_clicked()

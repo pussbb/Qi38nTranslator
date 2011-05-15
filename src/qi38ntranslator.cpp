@@ -67,8 +67,6 @@ void Qi38nTranslator::updateProjectTemplates ()
         if(rx.cap (1) == "php")
             icon = ":/mimetypes/php";
         file.replace (rx.cap (0),"");
-        qDebug ()<<rx.cap (1);
-        qDebug ()<<rx.cap (0);
         ui->projectTemplates->insertItem (0,QIcon(icon),file,rx.cap (1));
     }
 }
@@ -87,6 +85,7 @@ void Qi38nTranslator::on_projectTemplates_currentIndexChanged(int index)
     ui->fileExt->setText (tplSettings.value ("mimetypes","").toString ());
     ui->ignoreStr->setText (tplSettings.value ("ignore","").toStringList ().join ("\n"));
     ui->langFileRx->setText (tplSettings.value ("langfilerx","").toString ());
+    ui->saveTemplate->setText (tplSettings.value ("savetemplate","").toString ());
 }
 
 void Qi38nTranslator::on_createProject_clicked()
@@ -285,7 +284,6 @@ void Qi38nTranslator::on_findInFile_clicked()
             listItem->setBackgroundColor(0,QColor(Qt::red));
         }
     }
-
 }
 
 void Qi38nTranslator::on_acceptTranslation_clicked()
@@ -304,4 +302,40 @@ void Qi38nTranslator::on_acceptTranslation_clicked()
 void Qi38nTranslator::on_clearTranslation_clicked()
 {
     ui->translation->clear ();
+}
+
+void Qi38nTranslator::on_actionSave_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                    tr("QFileDialog::getSaveFileName()"),
+                                    ui->destFile->text (),
+                                    tr("All Files (*);;Text Files (*.txt)")
+                                    );
+    if (fileName.isEmpty ())
+        return;
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning (this, tr("Saving error"),
+                             tr("Cannot write file %1.")
+                             .arg(fileName));
+        return;
+    }
+
+    QRegExp rx("\\{(.*)\\}");
+    rx.indexIn(ui->saveTemplate->toPlainText (), 0);
+    qDebug ()<<rx.cap (1);
+    QStringList data;
+    QString tmp;
+    for (int i = 0; i < ui->tranlationList->count (); i++) {
+        tmp = rx.cap (1);
+        tmp.replace ("{key}",ui->tranlationList->item (i)->text ());
+        tmp.replace ("{value}",ui->tranlationList->item (i)->data (Qt::UserRole).toString ());
+        data << tmp;
+    }
+    QString toSave = ui->saveTemplate->toPlainText ();
+    toSave.replace (rx.cap (),data.join ("\n"));
+
+    file.write(toSave.toUtf8());
+    file.close ();
 }

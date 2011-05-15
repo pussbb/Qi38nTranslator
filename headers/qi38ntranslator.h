@@ -62,6 +62,8 @@ private slots:
 
     void on_clearTranslation_clicked();
 
+    void on_actionSave_triggered();
+
 private:
     Ui::Qi38nTranslator *ui;
 };
