@@ -47,6 +47,7 @@ void Settings::on_phpTemplSave_clicked()
     tplSettings.setValue ("mimetypes","php");
     tplSettings.setValue ("searchfor",ui->searchFor->text ());
     tplSettings.setValue ("ignore",ui->ignoreStr->toPlainText ().split ("\n"));
+    tplSettings.setValue ("langfilerx",ui->langFileRx->text ());
     tplSettings.sync ();
     updatePhpTemplatesList();
 }
@@ -62,6 +63,7 @@ void Settings::on_phpTemplatesList_currentIndexChanged(int index)
     ui->phpTemplName->setText (tplSettings.value ("name","").toString ());
     ui->searchFor->setText (tplSettings.value ("searchfor","").toString ());
     ui->ignoreStr->setText (tplSettings.value ("ignore","").toStringList ().join ("\n"));
+    ui->langFileRx->setText (tplSettings.value ("langfilerx","").toString ());
 }
 
 void Settings::on_newPhpTemplate_clicked()

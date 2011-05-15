@@ -25,7 +25,7 @@ void Qi38nTranslator::on_actionAbout_Qt_triggered()
 
 void Qi38nTranslator::on_actionClose_triggered()
 {
-   exit (0);
+    exit (0);
 }
 
 void Qi38nTranslator::on_selectDestFile_clicked()
@@ -40,9 +40,9 @@ void Qi38nTranslator::on_selectDestFile_clicked()
 void Qi38nTranslator::on_selectSourceFolder_clicked()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Choose Directory"),
-                                                        "",
-                                                        QFileDialog::ShowDirsOnly
-                                                        | QFileDialog::DontResolveSymlinks);
+                                                    "",
+                                                    QFileDialog::ShowDirsOnly
+                                                    | QFileDialog::DontResolveSymlinks);
     if(!dir.isEmpty())
         ui->sourceFolder->setText(dir);
 }
@@ -75,17 +75,18 @@ void Qi38nTranslator::updateProjectTemplates ()
 
 void Qi38nTranslator::on_projectTemplates_currentIndexChanged(int index)
 {
-  Q_UNUSED(index);
+    Q_UNUSED(index);
 
-  QString file = templateDir.canonicalPath()+QDir::toNativeSeparators("/")
+    QString file = templateDir.canonicalPath()+QDir::toNativeSeparators("/")
             + ui->projectTemplates->currentText ()+ "."
             + ui->projectTemplates->itemData (0,Qt::UserRole).toString ()
             + "tpl";
-  QSettings tplSettings(file,QSettings::IniFormat);
+    QSettings tplSettings(file,QSettings::IniFormat);
 
-  ui->searchFor->setText (tplSettings.value ("searchfor","").toString ());
-  ui->fileExt->setText (tplSettings.value ("mimetypes","").toString ());
-  ui->ignoreStr->setText (tplSettings.value ("ignore","").toStringList ().join ("\n"));
+    ui->searchFor->setText (tplSettings.value ("searchfor","").toString ());
+    ui->fileExt->setText (tplSettings.value ("mimetypes","").toString ());
+    ui->ignoreStr->setText (tplSettings.value ("ignore","").toStringList ().join ("\n"));
+    ui->langFileRx->setText (tplSettings.value ("langfilerx","").toString ());
 }
 
 void Qi38nTranslator::on_createProject_clicked()
@@ -106,8 +107,7 @@ void Qi38nTranslator::updateProjectList ()
     settings.beginGroup ("Projects");
     QStringList keys  = settings.allKeys ();
 
-    foreach (QString key, keys)
-    {
+    foreach (QString key, keys) {
         QListWidgetItem *item = new QListWidgetItem(ui->projectList);
         item->setText (key);
         item->setIcon (QIcon(":/mimetypes/"+settings.value (key,"php").toString ()));
@@ -128,14 +128,22 @@ void Qi38nTranslator::on_projectList_itemDoubleClicked(QListWidgetItem* item)
 
 void Qi38nTranslator::on_openProject_clicked()
 {
-///
+    ui->tranlationList->clear ();
+    ui->fileTree->clear ();
+    ui->translation->clear ();
+    ui->currentText->clear ();
+
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->actionSave->setEnabled (true);
+    ui->actionBackToMainPage->setEnabled (true);
+    parseTranslationFile (ui->destFile->text ());
+    findInFolder (ui->sourceFolder->text ());
 }
 
 void Qi38nTranslator::on_projectList_customContextMenuRequested(QPoint pos)
 {
     if(ui->projectList->currentIndex().isValid()
-            && ui->projectList->currentItem()->isSelected())
-    {
+            && ui->projectList->currentItem()->isSelected()) {
         QMenu *m=new QMenu();
         pos.setX(pos.x()-5);
         pos.setY(pos.y()+5);
@@ -151,4 +159,149 @@ void Qi38nTranslator::on_actionRemove_Project_triggered()
     settings.remove (item->text());
     updateProjectList ();
     settings.sync ();
+}
+
+void Qi38nTranslator::on_actionBackToMainPage_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void Qi38nTranslator::parseTranslationFile (QString fileName)
+{
+    QFile file(fileName);
+
+    if (!file.open (QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(0, QObject::tr("Error"), QObject::tr("Could't open file for the reading"));
+        return;
+    }
+    QTextStream stream ( &file );
+    stream.setCodec("UTF-8");
+    QString strTmp;
+    strTmp =  stream.readAll();
+    QRegExp rx( ui->langFileRx->text ());
+    rx.setMinimal(true);
+    QString strTranslated;
+    int pos = 0;
+
+    while((pos = rx.indexIn(strTmp, pos)) != -1) {
+        QListWidgetItem *item = new QListWidgetItem(rx.cap(1),ui->tranlationList);
+        strTranslated = rx.cap(2);
+        item->setData(Qt::UserRole,rx.cap(2));
+
+        if(!strTranslated.isEmpty ())
+            item->setIcon (QIcon(":/main/main/accept.png"));
+        else
+            item->setIcon (QIcon(":/main/main/warning.png"));
+        item->setBackgroundColor (QColor(Qt::red));
+        pos += rx.matchedLength();
+
+    }
+}
+
+void Qi38nTranslator::findInFolder (QString folderName)
+{
+    QString strTmp;
+    QStringList list;
+    QDirIterator directory_walker(folderName, QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    while(directory_walker.hasNext()) {
+        directory_walker.next();
+        if(directory_walker.fileInfo().completeSuffix() == ui->fileExt->text ()) {
+            QTreeWidgetItem *item=new QTreeWidgetItem();
+            item->setText(0,directory_walker.fileName());
+            item->setData(0,Qt::UserRole,directory_walker.filePath());
+            item->setToolTip(0,directory_walker.filePath());
+            QFile file(directory_walker.filePath());
+            if (file.open(QIODevice::ReadOnly)) {
+                QTextStream stream ( &file );
+                stream.setCodec("UTF-8");
+                list.clear ();
+                strTmp =  stream.readAll();
+                foreach (QString ignore, ui->ignoreStr->toPlainText ().split ("\n")) {
+                    strTmp = strTmp.replace(ignore,"");
+                }
+                QRegExp rx(ui->searchFor->text ());
+                rx.setMinimal(true);
+                int pos = 0;
+                while((pos = rx.indexIn(strTmp, pos)) != -1) {
+                    QTreeWidgetItem *childitem=new QTreeWidgetItem(item);
+                    childitem->setText(0,rx.cap(1));
+                    list << rx.cap(1);
+                    pos += rx.matchedLength();
+                }
+                list.removeDuplicates();
+                if(ui->tranlationList->count() > 0 )
+                {
+                    foreach (QString msg, list) {
+                        QList<QListWidgetItem *>   itemList =
+                                ui->tranlationList->findItems(msg,Qt::MatchExactly);
+                        if(itemList.count() == 0){
+                            QListWidgetItem *itemTr = new QListWidgetItem(ui->tranlationList);
+                            itemTr->setText (msg);
+                            itemTr->setIcon (QIcon(":/main/main/warning.png"));
+                            itemTr->setBackgroundColor (QColor(Qt::red));
+                        }
+                        else {
+                            foreach (QListWidgetItem *itemTr, itemList) {
+                                itemTr->setBackgroundColor (QColor(Qt::green));
+                            }
+                        }
+                    }
+                }
+                else{
+                    foreach (QString msg, list) {
+                        QListWidgetItem *itemTr = new QListWidgetItem(ui->tranlationList);
+                        itemTr->setText (msg);
+                        itemTr->setIcon (QIcon(":/main/main/warning.png"));
+                        itemTr->setBackgroundColor (QColor(Qt::red));
+                    }
+                }
+            }
+            if(item->childCount() > 0)
+                                ui->fileTree->addTopLevelItem(item);
+        }
+    }
+}
+
+void Qi38nTranslator::on_tranlationList_itemDoubleClicked(QListWidgetItem* item)
+{
+    ui->currentText->setText (item->text ());
+    ui->translation->setText (item->data (Qt::UserRole).toString ());
+    currentTranslationItem = item;
+}
+
+void Qi38nTranslator::on_findInFile_clicked()
+{
+    if(ui->tranlationList->currentIndex().isValid()
+            && ui->tranlationList->currentItem()->isSelected()) {
+        foreach (QTreeWidgetItem *listItem,fileTreeList) {
+            listItem->parent()->setExpanded(false);
+            listItem->setBackgroundColor(0,QColor(Qt::transparent));
+        }
+        fileTreeList.clear();
+        fileTreeList = ui->fileTree->findItems(ui->tranlationList->currentItem ()->text ()
+                                                  ,Qt::MatchContains |Qt::MatchRecursive, 0);
+        foreach (QTreeWidgetItem *listItem,fileTreeList) {
+            listItem->parent()->setExpanded(true);
+            listItem->setBackgroundColor(0,QColor(Qt::red));
+        }
+    }
+
+}
+
+void Qi38nTranslator::on_acceptTranslation_clicked()
+{
+    currentTranslationItem->setData (Qt::UserRole,ui->translation->toPlainText ());
+    if (ui->translation->toPlainText ().isEmpty ()) {
+        currentTranslationItem->setIcon (QIcon(":/main/main/warning.png"));
+        currentTranslationItem->setBackgroundColor (QColor(Qt::red));
+    }
+    else {
+        currentTranslationItem->setIcon (QIcon(":/main/main/accept.png"));
+        currentTranslationItem->setBackgroundColor (QColor(Qt::green));
+    }
+}
+
+void Qi38nTranslator::on_clearTranslation_clicked()
+{
+    ui->translation->clear ();
 }

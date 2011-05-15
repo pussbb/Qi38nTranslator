@@ -1,0 +1,6 @@
+[General]
+name=Kohana
+mimetypes=php
+searchfor=__\\('(.*)'
+ignore=<script.*script>, <!--.*-->, //.*\\n, /\\*.*/
+langfilerx="\\s'(.*)'\\s*=>\\s*'(.*)'"

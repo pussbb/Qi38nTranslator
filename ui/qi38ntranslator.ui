@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>624</width>
-    <height>449</height>
+    <width>600</width>
+    <height>530</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,13 +15,13 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <property name="margin">
-     <number>1</number>
-    </property>
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="autoFillBackground">
        <bool>true</bool>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -136,14 +136,14 @@
                </property>
               </widget>
              </item>
-             <item row="9" column="2" colspan="2">
+             <item row="10" column="2" colspan="2">
               <widget class="QTextEdit" name="ignoreStr">
                <property name="enabled">
                 <bool>false</bool>
                </property>
               </widget>
              </item>
-             <item row="9" column="0">
+             <item row="10" column="0">
               <widget class="QLabel" name="label_5">
                <property name="text">
                 <string>Ignore</string>
@@ -164,7 +164,7 @@
                </property>
               </widget>
              </item>
-             <item row="10" column="2" colspan="2">
+             <item row="11" column="2" colspan="2">
               <widget class="QLabel" name="label_7">
                <property name="text">
                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -203,7 +203,7 @@ p, li { white-space: pre-wrap; }
                </property>
               </widget>
              </item>
-             <item row="11" column="2">
+             <item row="12" column="2">
               <widget class="QPushButton" name="createProject">
                <property name="enabled">
                 <bool>true</bool>
@@ -217,7 +217,7 @@ p, li { white-space: pre-wrap; }
                </property>
               </widget>
              </item>
-             <item row="11" column="3">
+             <item row="12" column="3">
               <widget class="QPushButton" name="clearProjValues">
                <property name="enabled">
                 <bool>true</bool>
@@ -227,10 +227,25 @@ p, li { white-space: pre-wrap; }
                </property>
               </widget>
              </item>
-             <item row="11" column="0">
+             <item row="12" column="0">
               <widget class="QPushButton" name="openProject">
                <property name="text">
                 <string>Open</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="0">
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>Languge file
+parser</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="2" colspan="2">
+              <widget class="QLineEdit" name="langFileRx">
+               <property name="enabled">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -241,7 +256,234 @@ p, li { white-space: pre-wrap; }
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_2"/>
+      <widget class="QWidget" name="page_2">
+       <layout class="QGridLayout" name="gridLayout_7">
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item row="1" column="0">
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <widget class="QListWidget" name="tranlationList">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QFrame" name="frame">
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QFormLayout" name="formLayout">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>Current</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="currentText">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>Translation</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QTextEdit" name="translation"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QCheckBox" name="googleTranslator">
+               <property name="text">
+                <string>Google 
+Translator</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QWidget" name="widget" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>300</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_11">
+                  <property name="text">
+                   <string>From:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="gLangFrom">
+                  <property name="minimumSize">
+                   <size>
+                    <width>90</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="label_12">
+                  <property name="text">
+                   <string>To</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QComboBox" name="gLangTo">
+                  <property name="minimumSize">
+                   <size>
+                    <width>90</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QToolButton" name="gTransUpdate">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../res/qi38tr.qrc">
+                    <normaloff>:/main/main/refresh.png</normaloff>:/main/main/refresh.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0" colspan="5">
+                 <widget class="QTextEdit" name="gTranslated"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="5" column="0" colspan="2">
+              <widget class="QTreeWidget" name="fileTree">
+               <column>
+                <property name="text">
+                 <string>Files</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QFrame" name="frame_2">
+               <property name="minimumSize">
+                <size>
+                 <width>300</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QPushButton" name="acceptTranslation">
+                <property name="geometry">
+                 <rect>
+                  <x>30</x>
+                  <y>2</y>
+                  <width>75</width>
+                  <height>26</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Accept</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../res/qi38tr.qrc">
+                  <normaloff>:/main/main/accept.png</normaloff>:/main/main/accept.png</iconset>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="clearTranslation">
+                <property name="geometry">
+                 <rect>
+                  <x>120</x>
+                  <y>2</y>
+                  <width>75</width>
+                  <height>26</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Clear</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../res/qi38tr.qrc">
+                  <normaloff>:/main/main/delete_page.png</normaloff>:/main/main/delete_page.png</iconset>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="findInFile">
+                <property name="geometry">
+                 <rect>
+                  <x>206</x>
+                  <y>2</y>
+                  <width>89</width>
+                  <height>26</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Find File</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../res/qi38tr.qrc">
+                  <normaloff>:/main/main/search_page.png</normaloff>:/main/main/search_page.png</iconset>
+                </property>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -251,7 +493,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>624</width>
+     <width>600</width>
      <height>25</height>
     </rect>
    </property>

@@ -4,6 +4,12 @@
 #include "headers/qcorewindow.h"
 #include <QDir>
 #include <QListWidgetItem>
+#include <QFile>
+#include <QMessageBox>
+#include <QDirIterator>
+#include <QTreeWidgetItem>
+#include <QListWidgetItem>
+
 namespace Ui {
     class Qi38nTranslator;
 }
@@ -16,6 +22,8 @@ public:
     explicit Qi38nTranslator(QWidget *parent = 0);
     ~Qi38nTranslator();
     QDir templateDir;
+    QList<QTreeWidgetItem *> fileTreeList;
+    QListWidgetItem* currentTranslationItem;
 
 private slots:
     void on_actionAbout_Qt_triggered();
@@ -41,6 +49,18 @@ private slots:
     void on_projectList_customContextMenuRequested(QPoint pos);
 
     void on_actionRemove_Project_triggered();
+
+    void on_actionBackToMainPage_triggered();
+    void parseTranslationFile(QString fileName);
+    void findInFolder(QString folderName);
+
+    void on_tranlationList_itemDoubleClicked(QListWidgetItem* item);
+
+    void on_findInFile_clicked();
+
+    void on_acceptTranslation_clicked();
+
+    void on_clearTranslation_clicked();
 
 private:
     Ui::Qi38nTranslator *ui;
