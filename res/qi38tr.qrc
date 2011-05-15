@@ -1,1 +1,23 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/main">
+        <file>main/back.png</file>
+        <file>main/accept.png</file>
+        <file>main/add_page.png</file>
+        <file>main/chart.png</file>
+        <file>main/delete_page.png</file>
+        <file>main/folder.png</file>
+        <file>main/help.png</file>
+        <file>main/info.png</file>
+        <file>main/page_process.png</file>
+        <file>main/process.png</file>
+        <file>main/refresh.png</file>
+        <file>main/search_page.png</file>
+        <file>main/warning.png</file>
+        <file>main/Save.png</file>
+        <file>main/templates.png</file>
+    </qresource>
+    <qresource prefix="/mimetypes">
+        <file alias="js">mimetypes/application-javascript.png</file>
+        <file alias="php">mimetypes/application-x-php.png</file>
+    </qresource>
+</RCC>

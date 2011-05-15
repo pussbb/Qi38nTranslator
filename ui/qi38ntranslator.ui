@@ -56,7 +56,7 @@
             <number>0</number>
            </property>
            <item row="0" column="0">
-            <widget class="QListWidget" name="listWidget"/>
+            <widget class="QListWidget" name="projectList"/>
            </item>
           </layout>
          </widget>
@@ -93,7 +93,11 @@
               </widget>
              </item>
              <item row="1" column="2">
-              <widget class="QLineEdit" name="lineEdit_2"/>
+              <widget class="QLineEdit" name="destFile">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
              </item>
              <item row="5" column="0">
               <widget class="QLabel" name="label_3">
@@ -103,17 +107,17 @@
               </widget>
              </item>
              <item row="5" column="3">
-              <widget class="QToolButton" name="toolButton">
+              <widget class="QToolButton" name="selectSourceFolder">
                <property name="text">
                 <string>...</string>
                </property>
               </widget>
              </item>
              <item row="0" column="2" colspan="2">
-              <widget class="QLineEdit" name="lineEdit"/>
+              <widget class="QLineEdit" name="projetName"/>
              </item>
              <item row="6" column="2" colspan="2">
-              <widget class="QComboBox" name="comboBox"/>
+              <widget class="QComboBox" name="projectTemplates"/>
              </item>
              <item row="6" column="0">
               <widget class="QLabel" name="label_4">
@@ -123,7 +127,7 @@
               </widget>
              </item>
              <item row="9" column="2" colspan="2">
-              <widget class="QTextEdit" name="textEdit"/>
+              <widget class="QTextEdit" name="ignoreStr"/>
              </item>
              <item row="9" column="0">
               <widget class="QLabel" name="label_5">
@@ -140,7 +144,7 @@
               </widget>
              </item>
              <item row="1" column="3">
-              <widget class="QToolButton" name="toolButton_2">
+              <widget class="QToolButton" name="selectDestFile">
                <property name="text">
                 <string>...</string>
                </property>
@@ -165,23 +169,37 @@ p, li { white-space: pre-wrap; }
               </widget>
              </item>
              <item row="7" column="2" colspan="2">
-              <widget class="QLineEdit" name="lineEdit_4"/>
+              <widget class="QLineEdit" name="fileExt"/>
              </item>
              <item row="8" column="2" colspan="2">
-              <widget class="QLineEdit" name="lineEdit_5"/>
+              <widget class="QLineEdit" name="searchFor"/>
              </item>
              <item row="5" column="2">
-              <widget class="QLineEdit" name="lineEdit_3"/>
+              <widget class="QLineEdit" name="sourceFolder">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
              </item>
              <item row="11" column="2">
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="createProject">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
                 <string>Create Project</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../res/qi38tr.qrc">
+                 <normaloff>:/main/main/add_page.png</normaloff>:/main/main/add_page.png</iconset>
                </property>
               </widget>
              </item>
              <item row="11" column="3">
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="clearProjValues">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
                 <string>Clear</string>
                </property>
@@ -212,12 +230,14 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionSave"/>
     <addaction name="actionClose"/>
    </widget>
    <widget class="QMenu" name="menuOptions">
     <property name="title">
      <string>Options</string>
     </property>
+    <addaction name="actionSettings"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -238,8 +258,15 @@ p, li { white-space: pre-wrap; }
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSave"/>
+   <addaction name="actionSettings"/>
+   <addaction name="actionBackToMainPage"/>
   </widget>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="../res/qi38tr.qrc">
+     <normaloff>:/main/main/info.png</normaloff>:/main/main/info.png</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
@@ -254,8 +281,43 @@ p, li { white-space: pre-wrap; }
     <string>Close</string>
    </property>
   </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="../res/qi38tr.qrc">
+     <normaloff>:/main/main/page_process.png</normaloff>:/main/main/page_process.png</iconset>
+   </property>
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionBackToMainPage">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../res/qi38tr.qrc">
+     <normaloff>:/main/main/back.png</normaloff>:/main/main/back.png</iconset>
+   </property>
+   <property name="text">
+    <string>Back To Main Page</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../res/qi38tr.qrc">
+     <normaloff>:/main/main/Save.png</normaloff>:/main/main/Save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../res/qi38tr.qrc"/>
+ </resources>
  <connections/>
 </ui>
