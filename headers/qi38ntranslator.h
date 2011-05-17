@@ -10,7 +10,7 @@
 #include <QTreeWidgetItem>
 #include <QListWidgetItem>
 #include <QProgressDialog>
-
+#include "headers/qgoogletranslator.h"
 namespace Ui {
     class Qi38nTranslator;
 }
@@ -26,6 +26,7 @@ public:
     QList<QTreeWidgetItem *> fileTreeList;
     QListWidgetItem* currentTranslationItem;
     QProgressDialog *progress;
+    QGoogleTranslator *googleTranslator;
 
 private slots:
     void on_actionAbout_Qt_triggered();

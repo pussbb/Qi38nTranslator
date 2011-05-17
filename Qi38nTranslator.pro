@@ -24,11 +24,13 @@ TRANSLATIONS = ./lang/qi38ntr_ru.ts \
 SOURCES += main.cpp\
         src/qi38ntranslator.cpp \
     src/qcorewindow.cpp \
-    src/settings.cpp
+    src/settings.cpp \
+    src/qgoogletranslator.cpp
 
 HEADERS  += headers/qi38ntranslator.h \
     headers/qcorewindow.h \
-    headers/settings.h
+    headers/settings.h \
+    headers/qgoogletranslator.h
 
 FORMS    += ui/qi38ntranslator.ui \
     ui/settings.ui

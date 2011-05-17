@@ -11,6 +11,9 @@ Qi38nTranslator::Qi38nTranslator(QWidget *parent) :
     templateDir = QDir(QApplication::applicationDirPath()+QDir::toNativeSeparators("/templates/"));
     updateProjectTemplates();
     updateProjectList();
+    googleTranslator = new QGoogleTranslator(this,ui->gLangFrom,ui->gLangTo);
+    googleTranslator->setDefaultLangs ();
+
 }
 
 Qi38nTranslator::~Qi38nTranslator()
