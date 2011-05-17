@@ -28,6 +28,19 @@ void Qi38nTranslator::on_actionClose_triggered()
     exit (0);
 }
 
+void Qi38nTranslator::changeEvent(QEvent *e)
+{
+    switch (e->type()) {
+    case QEvent::LanguageChange:
+    {
+        ui->retranslateUi(this);
+        break;
+    }
+    default:
+        break;
+    }
+}
+
 void Qi38nTranslator::on_selectDestFile_clicked()
 {
     QString file = QFileDialog::getOpenFileName(this, tr("Open File"),
@@ -127,8 +140,8 @@ void Qi38nTranslator::on_projectList_itemDoubleClicked(QListWidgetItem* item)
 
 void Qi38nTranslator::on_openProject_clicked()
 {
-    progress = new QProgressDialog("Operation in progress.", "Cancel", 0, 0);
-    progress->show ();
+    progress = new QProgressDialog("Operation in progress.", "Cancel",0,0,this);
+
     ui->tranlationList->clear ();
     ui->fileTree->clear ();
     ui->translation->clear ();

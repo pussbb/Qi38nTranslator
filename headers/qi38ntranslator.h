@@ -39,7 +39,7 @@ private slots:
     void on_actionSettings_triggered();
     void updateProjectTemplates();
     void updateProjectList();
-
+    void changeEvent(QEvent *e);
     void on_projectTemplates_currentIndexChanged(int index);
 
     void on_createProject_clicked();
