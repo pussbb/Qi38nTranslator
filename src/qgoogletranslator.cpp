@@ -1,15 +1,50 @@
 #include "headers/qgoogletranslator.h"
-
+#include <QDebug>
 QGoogleTranslator::QGoogleTranslator(QObject *parent, QComboBox *from, QComboBox *to) :
     QObject(parent),from(from), to(to)
 {
     buildListFrom ();
     buildListTo ();
+    nam = new QNetworkAccessManager(this);
+    connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
 }
 
 QString QGoogleTranslator::version ()
 {
     return "hi";
+}
+void QGoogleTranslator::finishedSlot(QNetworkReply* reply)
+{
+    // Reathising attributes of the reply
+    // e.g. the HTTP    QTextStream stream ( &file );
+
+    QVariant statusCodV =
+            reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+    // Or the target URL if it was a rethisirect:
+    QVariant redirectionTargetUrl =
+            reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
+    QTextStream stream ( reply );
+    stream.setCodec("UTF-8");
+    QString strTmp;
+    strTmp =  stream.readAll();
+    QVariant response = Json::parse(strTmp);
+    emit translationFinished(response.toMap ().value ("responseData")
+                             .toMap ().value ("translatedText").toString ());
+}
+
+void QGoogleTranslator::translateString (QString text)
+{
+    QUrl url("https://ajax.googleapis.com/ajax/services/language/translate");
+    QString lang = from->itemData (from->currentIndex (),Qt::UserRole).toString ()
+            +"|"
+            +to->itemData (to->currentIndex ()).toString ();
+    QList<QPair<QString, QString> > query;
+    query.append (qMakePair(QString("v"), QString("1.0")));
+    query.append (qMakePair(QString("langpair"),QString(lang.toUtf8 ())));
+    query.append (qMakePair(QString("q"),QString(text.toUtf8 ())));
+    url.setQueryItems (query);
+qDebug()<<url.toString ();
+    nam->get(QNetworkRequest(url));
 }
 
 void QGoogleTranslator::buildListFrom ()

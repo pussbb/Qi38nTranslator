@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 TARGET = Qi38nTranslator
 TEMPLATE = app
@@ -25,12 +25,14 @@ SOURCES += main.cpp\
         src/qi38ntranslator.cpp \
     src/qcorewindow.cpp \
     src/settings.cpp \
-    src/qgoogletranslator.cpp
+    src/qgoogletranslator.cpp \
+    qt-json/json.cpp
 
 HEADERS  += headers/qi38ntranslator.h \
     headers/qcorewindow.h \
     headers/settings.h \
-    headers/qgoogletranslator.h
+    headers/qgoogletranslator.h \
+    qt-json/json.h
 
 FORMS    += ui/qi38ntranslator.ui \
     ui/settings.ui

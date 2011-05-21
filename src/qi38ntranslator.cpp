@@ -12,8 +12,15 @@ Qi38nTranslator::Qi38nTranslator(QWidget *parent) :
     updateProjectTemplates();
     updateProjectList();
     googleTranslator = new QGoogleTranslator(this,ui->gLangFrom,ui->gLangTo);
+    connect (googleTranslator, SIGNAL(translationFinished(QString))
+             ,this, SLOT(updateGoogleTranslation(QString)));
     googleTranslator->setDefaultLangs ();
 
+}
+
+void Qi38nTranslator::updateGoogleTranslation (QString translation)
+{
+    ui->gTranslated->setText (translation);
 }
 
 Qi38nTranslator::~Qi38nTranslator()
@@ -284,6 +291,8 @@ void Qi38nTranslator::on_tranlationList_itemDoubleClicked(QListWidgetItem* item)
 {
     ui->currentText->setText (item->text ());
     ui->translation->setText (item->data (Qt::UserRole).toString ());
+    if(ui->googleTranslator->isChecked ())
+        googleTranslator->translateString (item->text ());
     currentTranslationItem = item;
 }
 
@@ -357,4 +366,11 @@ void Qi38nTranslator::on_actionSave_triggered()
 
     file.write(toSave.toUtf8());
     file.close ();
+}
+
+void Qi38nTranslator::on_gTransUpdate_clicked()
+{
+    if(!ui->currentText->text ().isEmpty ())
+         googleTranslator->translateString (ui->currentText->text ());
+
 }

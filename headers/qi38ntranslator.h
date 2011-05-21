@@ -28,6 +28,8 @@ public:
     QProgressDialog *progress;
     QGoogleTranslator *googleTranslator;
 
+public slots:
+    void updateGoogleTranslation(QString translation);
 private slots:
     void on_actionAbout_Qt_triggered();
 
@@ -66,6 +68,8 @@ private slots:
     void on_clearTranslation_clicked();
 
     void on_actionSave_triggered();
+
+    void on_gTransUpdate_clicked();
 
 private:
     Ui::Qi38nTranslator *ui;

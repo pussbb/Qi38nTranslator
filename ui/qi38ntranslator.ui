@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -436,9 +436,9 @@ Translator</string>
                <widget class="QPushButton" name="acceptTranslation">
                 <property name="geometry">
                  <rect>
-                  <x>30</x>
+                  <x>8</x>
                   <y>2</y>
-                  <width>75</width>
+                  <width>97</width>
                   <height>26</height>
                  </rect>
                 </property>
@@ -459,9 +459,9 @@ Translator</string>
                <widget class="QPushButton" name="clearTranslation">
                 <property name="geometry">
                  <rect>
-                  <x>120</x>
+                  <x>110</x>
                   <y>2</y>
-                  <width>75</width>
+                  <width>85</width>
                   <height>26</height>
                  </rect>
                 </property>
@@ -476,9 +476,9 @@ Translator</string>
                <widget class="QPushButton" name="findInFile">
                 <property name="geometry">
                  <rect>
-                  <x>206</x>
+                  <x>198</x>
                   <y>2</y>
-                  <width>89</width>
+                  <width>97</width>
                   <height>26</height>
                  </rect>
                 </property>
