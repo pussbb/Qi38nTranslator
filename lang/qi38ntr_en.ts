@@ -342,12 +342,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="210"/>
+        <location filename="../src/qi38ntranslator.cpp" line="212"/>
         <source>Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="210"/>
+        <location filename="../src/qi38ntranslator.cpp" line="212"/>
         <source>Could&apos;t open file for the reading</source>
         <translation></translation>
     </message>
@@ -541,7 +541,7 @@ Translator</source>
     </message>
     <message>
         <location filename="../ui/qi38ntranslator.ui" line="618"/>
-        <location filename="../src/qi38ntranslator.cpp" line="61"/>
+        <location filename="../src/qi38ntranslator.cpp" line="63"/>
         <source>Open File</source>
         <translation></translation>
     </message>
@@ -551,32 +551,32 @@ Translator</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="63"/>
+        <location filename="../src/qi38ntranslator.cpp" line="65"/>
         <source>Files (*)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="70"/>
+        <location filename="../src/qi38ntranslator.cpp" line="72"/>
         <source>Choose Directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="349"/>
+        <location filename="../src/qi38ntranslator.cpp" line="352"/>
         <source>QFileDialog::getSaveFileName()</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="351"/>
+        <location filename="../src/qi38ntranslator.cpp" line="354"/>
         <source>All Files (*);;Text Files (*.txt)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="358"/>
+        <location filename="../src/qi38ntranslator.cpp" line="361"/>
         <source>Saving error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="359"/>
+        <location filename="../src/qi38ntranslator.cpp" line="362"/>
         <source>Cannot write file %1.</source>
         <translation></translation>
     </message>
@@ -599,7 +599,7 @@ Translator</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="167"/>
+        <location filename="../ui/settings.ui" line="181"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -612,12 +612,12 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="182"/>
+        <location filename="../ui/settings.ui" line="196"/>
         <source>Ignore</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="189"/>
+        <location filename="../ui/settings.ui" line="203"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -626,18 +626,18 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="200"/>
+        <location filename="../ui/settings.ui" line="214"/>
         <source>Searching for</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="210"/>
+        <location filename="../ui/settings.ui" line="224"/>
         <source>Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="158"/>
-        <location filename="../ui/settings.ui" line="217"/>
+        <location filename="../ui/settings.ui" line="172"/>
+        <location filename="../ui/settings.ui" line="231"/>
         <source>Template</source>
         <translation></translation>
     </message>
@@ -662,29 +662,35 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="230"/>
+        <location filename="../ui/settings.ui" line="158"/>
+        <source>Automatic translate strings via Google Translate 
+if they does not have a translation</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/settings.ui" line="244"/>
         <source>File to save
  template</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="241"/>
+        <location filename="../ui/settings.ui" line="255"/>
         <source>New template</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="248"/>
+        <location filename="../ui/settings.ui" line="262"/>
         <source>Save Template</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="255"/>
+        <location filename="../ui/settings.ui" line="269"/>
         <source>Parsing language
  file</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="266"/>
+        <location filename="../ui/settings.ui" line="280"/>
         <source>File extension</source>
         <translation></translation>
     </message>

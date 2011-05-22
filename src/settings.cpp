@@ -16,8 +16,10 @@ Settings::Settings(QWidget *parent) :
                                        settings.value ("GoogleTransl/glangto","").toString ());
     else
         googleTranslator->setDefaultLangs ();
+    ui->autoTanslateGoogle->setChecked (settings.value ("GoogleTransl/autotrans",true).toBool ());
     ui->templatesList->addItem (QIcon(":/mimetypes/php"),"PHP","php");
     ui->templatesList->addItem (QIcon(":/mimetypes/js"),"JavaScript","js");
+    ui->saveLocale->setChecked (settings.value ("Core/save_locale",false).toBool ());
 }
 
 Settings::~Settings()
@@ -33,6 +35,7 @@ void Settings::on_buttonBox_accepted()
                            ui->gLangFrom->currentIndex ()));
     settings.setValue ("GoogleTransl/glangto",ui->gLangTo->itemData (
                            ui->gLangTo->currentIndex ()));
+    settings.setValue ("GoogleTransl/autotrans",ui->autoTanslateGoogle->isChecked ());
     accept ();
 }
 

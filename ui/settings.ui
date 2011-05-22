@@ -64,7 +64,7 @@
    <item row="1" column="3">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
-      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
@@ -90,10 +90,10 @@
       <widget class="QGroupBox" name="groupBox">
        <property name="geometry">
         <rect>
-         <x>16</x>
-         <y>50</y>
-         <width>387</width>
-         <height>80</height>
+         <x>12</x>
+         <y>48</y>
+         <width>399</width>
+         <height>107</height>
         </rect>
        </property>
        <property name="title">
@@ -102,8 +102,8 @@
        <widget class="QComboBox" name="gLangFrom">
         <property name="geometry">
          <rect>
-          <x>16</x>
-          <y>42</y>
+          <x>12</x>
+          <y>68</y>
           <width>145</width>
           <height>21</height>
          </rect>
@@ -112,8 +112,8 @@
        <widget class="QComboBox" name="gLangTo">
         <property name="geometry">
          <rect>
-          <x>192</x>
-          <y>40</y>
+          <x>188</x>
+          <y>68</y>
           <width>175</width>
           <height>22</height>
          </rect>
@@ -123,7 +123,7 @@
         <property name="geometry">
          <rect>
           <x>14</x>
-          <y>20</y>
+          <y>50</y>
           <width>56</width>
           <height>15</height>
          </rect>
@@ -135,14 +135,28 @@
        <widget class="QLabel" name="label_11">
         <property name="geometry">
          <rect>
-          <x>194</x>
-          <y>16</y>
+          <x>188</x>
+          <y>50</y>
           <width>56</width>
           <height>15</height>
          </rect>
         </property>
         <property name="text">
          <string>To</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="autoTanslateGoogle">
+        <property name="geometry">
+         <rect>
+          <x>4</x>
+          <y>18</y>
+          <width>389</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Automatic translate strings via Google Translate 
+if they does not have a translation</string>
         </property>
        </widget>
       </widget>

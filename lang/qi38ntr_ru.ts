@@ -342,12 +342,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="210"/>
+        <location filename="../src/qi38ntranslator.cpp" line="212"/>
         <source>Error</source>
         <translation>Ошыбка</translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="210"/>
+        <location filename="../src/qi38ntranslator.cpp" line="212"/>
         <source>Could&apos;t open file for the reading</source>
         <translation>Не удалось открыть файл для чтения</translation>
     </message>
@@ -547,7 +547,7 @@ Translator</source>
     </message>
     <message>
         <location filename="../ui/qi38ntranslator.ui" line="618"/>
-        <location filename="../src/qi38ntranslator.cpp" line="61"/>
+        <location filename="../src/qi38ntranslator.cpp" line="63"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
@@ -557,32 +557,32 @@ Translator</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="63"/>
+        <location filename="../src/qi38ntranslator.cpp" line="65"/>
         <source>Files (*)</source>
         <translation>Файлы (*)</translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="70"/>
+        <location filename="../src/qi38ntranslator.cpp" line="72"/>
         <source>Choose Directory</source>
         <translation>Выберете директорию</translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="349"/>
+        <location filename="../src/qi38ntranslator.cpp" line="352"/>
         <source>QFileDialog::getSaveFileName()</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="351"/>
+        <location filename="../src/qi38ntranslator.cpp" line="354"/>
         <source>All Files (*);;Text Files (*.txt)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="358"/>
+        <location filename="../src/qi38ntranslator.cpp" line="361"/>
         <source>Saving error</source>
         <translation>Ошыбка при сохранении</translation>
     </message>
     <message>
-        <location filename="../src/qi38ntranslator.cpp" line="359"/>
+        <location filename="../src/qi38ntranslator.cpp" line="362"/>
         <source>Cannot write file %1.</source>
         <translation>Неудалось записать в файл %1.</translation>
     </message>
@@ -609,7 +609,7 @@ Translator</source>
         <translation type="obsolete">Php шаблоны</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="167"/>
+        <location filename="../ui/settings.ui" line="181"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -622,12 +622,12 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="182"/>
+        <location filename="../ui/settings.ui" line="196"/>
         <source>Ignore</source>
         <translation>Игнорировать</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="189"/>
+        <location filename="../ui/settings.ui" line="203"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -640,25 +640,25 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;*Игноровать &lt;span style=&quot; text-decoration: underline;&quot;&gt;коментарии&lt;/span&gt; в исходном коде и т.п.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="200"/>
+        <location filename="../ui/settings.ui" line="214"/>
         <source>Searching for</source>
         <translation>Искать</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="210"/>
+        <location filename="../ui/settings.ui" line="224"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="158"/>
-        <location filename="../ui/settings.ui" line="217"/>
+        <location filename="../ui/settings.ui" line="172"/>
+        <location filename="../ui/settings.ui" line="231"/>
         <source>Template</source>
         <translation>Шаблон</translation>
     </message>
     <message>
         <location filename="../ui/settings.ui" line="87"/>
         <source>Remember selected language (User Interface)</source>
-        <translation></translation>
+        <translation type="unfinished">Запомнить выбраный язык(программы)</translation>
     </message>
     <message>
         <location filename="../ui/settings.ui" line="100"/>
@@ -676,31 +676,38 @@ p, li { white-space: pre-wrap; }
         <translation>На:</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="230"/>
+        <location filename="../ui/settings.ui" line="158"/>
+        <source>Automatic translate strings via Google Translate 
+if they does not have a translation</source>
+        <translation type="unfinished">Автоматический перевод строки с помощью Google Translate
+если они не имеют перевода</translation>
+    </message>
+    <message>
+        <location filename="../ui/settings.ui" line="244"/>
         <source>File to save
  template</source>
         <translation>Файл для сохранения
 шаблона</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="241"/>
+        <location filename="../ui/settings.ui" line="255"/>
         <source>New template</source>
         <translation>Новый шаблон</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="248"/>
+        <location filename="../ui/settings.ui" line="262"/>
         <source>Save Template</source>
         <translation>Сохранить шаблон</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="255"/>
+        <location filename="../ui/settings.ui" line="269"/>
         <source>Parsing language
  file</source>
         <translation>Парсинг языкового
 файла</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="266"/>
+        <location filename="../ui/settings.ui" line="280"/>
         <source>File extension</source>
         <translation>Расширение файла</translation>
     </message>

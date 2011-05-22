@@ -20,12 +20,14 @@ Qi38nTranslator::Qi38nTranslator(QWidget *parent) :
                                        settings.value ("GoogleTransl/glangto","").toString ());
     else
         googleTranslator->setDefaultLangs ();
-
+    ui->googleTranslator->setChecked (settings.value ("GoogleTransl/autotrans",true).toBool ());
 }
 
 void Qi38nTranslator::updateGoogleTranslation (QString translation)
 {
     ui->gTranslated->setText (translation);
+    if (ui->translation->document ()->toPlainText ().isEmpty ())
+        ui->translation->setText (translation);
 }
 
 Qi38nTranslator::~Qi38nTranslator()
@@ -238,7 +240,8 @@ void Qi38nTranslator::findInFolder (QString folderName)
 {
     QString strTmp;
     QStringList list;
-    QDirIterator directory_walker(folderName, QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    QDirIterator directory_walker(folderName, QDir::Files | QDir::NoSymLinks
+                                  |QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
     while(directory_walker.hasNext()) {
         directory_walker.next();
         if(directory_walker.fileInfo().completeSuffix() == ui->fileExt->text ()) {
