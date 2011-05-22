@@ -404,7 +404,7 @@ Translator</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0" colspan="5">
+                <item row="2" column="0" colspan="5">
                  <widget class="QTextEdit" name="gTranslated"/>
                 </item>
                </layout>
@@ -412,6 +412,9 @@ Translator</string>
              </item>
              <item row="5" column="0" colspan="2">
               <widget class="QTreeWidget" name="fileTree">
+               <property name="contextMenuPolicy">
+                <enum>Qt::CustomContextMenu</enum>
+               </property>
                <column>
                 <property name="text">
                  <string>Files</string>
@@ -547,6 +550,7 @@ Translator</string>
    <addaction name="actionSave"/>
    <addaction name="actionSettings"/>
    <addaction name="actionBackToMainPage"/>
+   <addaction name="actionBack_to_Translation"/>
   </widget>
   <action name="actionAbout">
    <property name="icon">
@@ -607,6 +611,23 @@ Translator</string>
    </property>
    <property name="text">
     <string>Remove Project</string>
+   </property>
+  </action>
+  <action name="actionOpen_File">
+   <property name="text">
+    <string>Open File</string>
+   </property>
+  </action>
+  <action name="actionBack_to_Translation">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../res/qi38tr.qrc">
+     <normaloff>:/main/main/next.png</normaloff>:/main/main/next.png</iconset>
+   </property>
+   <property name="text">
+    <string>Back to Translation</string>
    </property>
   </action>
  </widget>

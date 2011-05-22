@@ -71,6 +71,14 @@ private slots:
 
     void on_gTransUpdate_clicked();
 
+    void on_fileTree_customContextMenuRequested(QPoint pos);
+
+    void on_actionOpen_File_triggered();
+
+    void on_clearProjValues_clicked();
+
+    void on_actionBack_to_Translation_triggered();
+
 private:
     Ui::Qi38nTranslator *ui;
 };

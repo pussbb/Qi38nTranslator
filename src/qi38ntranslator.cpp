@@ -14,7 +14,12 @@ Qi38nTranslator::Qi38nTranslator(QWidget *parent) :
     googleTranslator = new QGoogleTranslator(this,ui->gLangFrom,ui->gLangTo);
     connect (googleTranslator, SIGNAL(translationFinished(QString))
              ,this, SLOT(updateGoogleTranslation(QString)));
-    googleTranslator->setDefaultLangs ();
+    if(settings.value ("GoogleTransl/glangfrom","").toString ()!=""
+            && settings.value ("GoogleTransl/glangto","").toString () != "")
+        googleTranslator->setDefaultLangs (settings.value ("GoogleTransl/glangfrom","").toString (),
+                                       settings.value ("GoogleTransl/glangto","").toString ());
+    else
+        googleTranslator->setDefaultLangs ();
 
 }
 
@@ -89,6 +94,8 @@ void Qi38nTranslator::updateProjectTemplates ()
         rx.indexIn(file, 0);
         if(rx.cap (1) == "php")
             icon = ":/mimetypes/php";
+        if(rx.cap (1) == "js")
+            icon = ":/mimetypes/js";
         file.replace (rx.cap (0),"");
         ui->projectTemplates->insertItem (0,QIcon(icon),file,rx.cap (1));
     }
@@ -105,7 +112,7 @@ void Qi38nTranslator::on_projectTemplates_currentIndexChanged(int index)
     QSettings tplSettings(file,QSettings::IniFormat);
 
     ui->searchFor->setText (tplSettings.value ("searchfor","").toString ());
-    ui->fileExt->setText (tplSettings.value ("mimetypes","").toString ());
+    ui->fileExt->setText (tplSettings.value ("filext","").toString ());
     ui->ignoreStr->setText (tplSettings.value ("ignore","").toStringList ().join ("\n"));
     ui->langFileRx->setText (tplSettings.value ("langfilerx","").toString ());
     ui->saveTemplate->setText (tplSettings.value ("savetemplate","").toString ());
@@ -151,7 +158,7 @@ void Qi38nTranslator::on_projectList_itemDoubleClicked(QListWidgetItem* item)
 void Qi38nTranslator::on_openProject_clicked()
 {
     progress = new QProgressDialog("Operation in progress.", "Cancel",0,0,this);
-
+    progress->show ();
     ui->tranlationList->clear ();
     ui->fileTree->clear ();
     ui->translation->clear ();
@@ -160,8 +167,10 @@ void Qi38nTranslator::on_openProject_clicked()
     ui->stackedWidget->setCurrentIndex(1);
     ui->actionSave->setEnabled (true);
     ui->actionBackToMainPage->setEnabled (true);
-    parseTranslationFile (ui->destFile->text ());
-    findInFolder (ui->sourceFolder->text ());
+    if (!ui->destFile->text ().isEmpty ())
+        parseTranslationFile (ui->destFile->text ());
+    if(!ui->sourceFolder->text ().isEmpty ())
+        findInFolder (ui->sourceFolder->text ());
     progress->hide ();
 }
 
@@ -189,6 +198,8 @@ void Qi38nTranslator::on_actionRemove_Project_triggered()
 void Qi38nTranslator::on_actionBackToMainPage_triggered()
 {
     ui->stackedWidget->setCurrentIndex(0);
+    ui->actionBackToMainPage->setEnabled (false);
+    ui->actionBack_to_Translation->setEnabled (true);
 }
 
 void Qi38nTranslator::parseTranslationFile (QString fileName)
@@ -373,4 +384,45 @@ void Qi38nTranslator::on_gTransUpdate_clicked()
     if(!ui->currentText->text ().isEmpty ())
          googleTranslator->translateString (ui->currentText->text ());
 
+}
+
+void Qi38nTranslator::on_fileTree_customContextMenuRequested(QPoint pos)
+{
+    if( ui->fileTree->currentIndex ().isValid ()
+            && ui->fileTree->currentItem ()->isSelected ()) {
+        QMenu *m=new QMenu();
+        pos.setX(pos.x()+5);
+        pos.setY(pos.y()+10);
+        m->addAction(ui->actionOpen_File);
+        m->exec(ui->fileTree->mapToGlobal(pos));
+    }
+}
+#include <QDesktopServices>
+void Qi38nTranslator::on_actionOpen_File_triggered()
+{
+    if( ui->fileTree->currentIndex ().isValid ()
+            && ui->fileTree->currentItem ()->isSelected ()) {
+        QString file;
+        if(ui->fileTree->currentItem ()->childCount () > 0)
+            file = ui->fileTree->currentItem ()->data (0,Qt::UserRole).toString ();
+        else
+            file = ui->fileTree->currentItem ()->parent()->data (0,Qt::UserRole).toString ();
+
+        QDesktopServices::openUrl(QUrl("file:///"+file, QUrl::TolerantMode));
+    }
+
+}
+
+void Qi38nTranslator::on_clearProjValues_clicked()
+{
+    ui->projetName->setText ("");
+    ui->sourceFolder->setText ("");
+    ui->destFile->setText ("");
+}
+
+void Qi38nTranslator::on_actionBack_to_Translation_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->actionBackToMainPage->setEnabled (true);
+    ui->actionBack_to_Translation->setEnabled (false);
 }

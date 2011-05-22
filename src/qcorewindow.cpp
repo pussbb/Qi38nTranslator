@@ -55,7 +55,7 @@ void QCoreWindow::switchLanguage(QAction *action)
     locale = action->data().toString();
 
     if(settings.value("Core/save_locale","false").toBool())
-        settings.setValue("locale",locale);
+        settings.setValue("Core/locale",locale);
 
     qtTranslator.load("qt_" + locale,
                  QLibraryInfo::location(QLibraryInfo::TranslationsPath));

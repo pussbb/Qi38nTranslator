@@ -1,5 +1,5 @@
 #include "headers/qgoogletranslator.h"
-#include <QDebug>
+#include <QTextStream>
 QGoogleTranslator::QGoogleTranslator(QObject *parent, QComboBox *from, QComboBox *to) :
     QObject(parent),from(from), to(to)
 {
@@ -11,7 +11,7 @@ QGoogleTranslator::QGoogleTranslator(QObject *parent, QComboBox *from, QComboBox
 
 QString QGoogleTranslator::version ()
 {
-    return "hi";
+    return "1.0";
 }
 void QGoogleTranslator::finishedSlot(QNetworkReply* reply)
 {
@@ -43,7 +43,7 @@ void QGoogleTranslator::translateString (QString text)
     query.append (qMakePair(QString("langpair"),QString(lang.toUtf8 ())));
     query.append (qMakePair(QString("q"),QString(text.toUtf8 ())));
     url.setQueryItems (query);
-qDebug()<<url.toString ();
+
     nam->get(QNetworkRequest(url));
 }
 
