@@ -286,6 +286,9 @@ parser</string>
               <height>16777215</height>
              </size>
             </property>
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
            </widget>
           </item>
           <item row="0" column="1">
@@ -628,6 +631,15 @@ Translator</string>
    </property>
    <property name="text">
     <string>Back to Translation</string>
+   </property>
+  </action>
+  <action name="actionRemove_Translation">
+   <property name="icon">
+    <iconset resource="../res/qi38tr.qrc">
+     <normaloff>:/main/main/delete_page.png</normaloff>:/main/main/delete_page.png</iconset>
+   </property>
+   <property name="text">
+    <string>Remove Translation</string>
    </property>
   </action>
  </widget>

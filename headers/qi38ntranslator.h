@@ -79,6 +79,10 @@ private slots:
 
     void on_actionBack_to_Translation_triggered();
 
+    void on_actionRemove_Translation_triggered();
+
+    void on_tranlationList_customContextMenuRequested(QPoint pos);
+
 private:
     Ui::Qi38nTranslator *ui;
 };

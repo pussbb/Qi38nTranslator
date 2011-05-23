@@ -102,7 +102,7 @@
         <location filename="../src/qgoogletranslator.cpp" line="64"/>
         <location filename="../src/qgoogletranslator.cpp" line="119"/>
         <source>English</source>
-        <translation>Русский</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/qgoogletranslator.cpp" line="65"/>
@@ -658,7 +658,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../ui/settings.ui" line="87"/>
         <source>Remember selected language (User Interface)</source>
-        <translation type="unfinished">Запомнить выбраный язык(программы)</translation>
+        <translation>Запомнить выбраный язык(программы)</translation>
     </message>
     <message>
         <location filename="../ui/settings.ui" line="100"/>
@@ -679,7 +679,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../ui/settings.ui" line="158"/>
         <source>Automatic translate strings via Google Translate 
 if they does not have a translation</source>
-        <translation type="unfinished">Автоматический перевод строки с помощью Google Translate
+        <translation>Автоматический перевод строки с помощью Google Translate
 если они не имеют перевода</translation>
     </message>
     <message>

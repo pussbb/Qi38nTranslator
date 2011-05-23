@@ -429,3 +429,22 @@ void Qi38nTranslator::on_actionBack_to_Translation_triggered()
     ui->actionBackToMainPage->setEnabled (true);
     ui->actionBack_to_Translation->setEnabled (false);
 }
+
+void Qi38nTranslator::on_actionRemove_Translation_triggered()
+{
+    QListWidgetItem* item = ui->tranlationList->takeItem(ui->tranlationList->currentRow ());
+    delete item;
+}
+
+void Qi38nTranslator::on_tranlationList_customContextMenuRequested(QPoint pos)
+{
+    if( ui->tranlationList->currentIndex ().isValid ()
+            && ui->tranlationList->currentItem ()->isSelected ()) {
+        QMenu *m=new QMenu();
+        pos.setX(pos.x()+5);
+        pos.setY(pos.y()+10);
+        m->addAction(ui->actionRemove_Translation);
+        m->exec(ui->tranlationList->mapToGlobal(pos));
+    }
+
+}
